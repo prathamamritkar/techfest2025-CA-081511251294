@@ -11,6 +11,8 @@ import { GardenVisualizer } from "./components/GardenVisualizer";
 import { FloatingIcon } from "./components/FloatingIcon";
 import { Navbar } from "./components/Navbar";
 import { TestimonialSection } from "./components/TestimonialSection";
+import { BrainIllustration } from "./components/BrainIllustration";
+import { VanillaComponentsDemo } from "./components/VanillaComponentsDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -539,39 +541,42 @@ export default function App() {
       </a>
 
       <main id="main-content" style={styles.main}>
-        {/* Hero Section */}
+        {/* TASK 4: Hero Section - Two-Column CSS Grid Layout */}
         <section style={styles.hero} aria-labelledby="hero-heading">
           {/* Decorative floating orbs */}
           <div style={styles.orb1} aria-hidden="true"></div>
           <div style={styles.orb2} aria-hidden="true"></div>
           <div style={styles.orb3} aria-hidden="true"></div>
 
-          <div ref={heroContentRef} style={styles.content}>
-            <h1 
-              id="hero-heading" 
-              ref={headlineRef}
-              className="glitch-text" 
-              style={styles.headline}
-            >
-              Grow Your Mind,
-              <br />
-              Cultivate Wellness
-            </h1>
+          {/* TASK 4: CSS Grid Container */}
+          <div className="hero-grid-override" style={styles.heroGrid}>
+            {/* Left Column: Content */}
+            <div ref={heroContentRef} style={styles.heroContent}>
+              <h1 
+                id="hero-heading" 
+                ref={headlineRef}
+                className="glitch-text" 
+                style={styles.headline}
+              >
+                Grow Your Mind,
+                <br />
+                Cultivate Wellness
+              </h1>
 
-            <p 
-              ref={subheadlineRef}
-              className="gradient-wave-text" 
-              style={styles.subheadline}
-            >
-              AI-powered cognitive training that blooms with you
-            </p>
+              <p 
+                ref={subheadlineRef}
+                className="gradient-wave-text" 
+                style={styles.subheadline}
+              >
+                AI-powered cognitive training that blooms with you
+              </p>
 
-            <p ref={descriptionRef} style={styles.description}>
-              Transform mindfulness and memory exercises into a thriving digital garden. 
-              Watch your progress bloom as you strengthen your mind.
-            </p>
+              <p ref={descriptionRef} style={styles.description}>
+                Transform mindfulness and memory exercises into a thriving digital garden. 
+                Watch your progress bloom as you strengthen your mind.
+              </p>
 
-            <div ref={ctaContainerRef} style={styles.ctaContainer}>
+              <div ref={ctaContainerRef} style={styles.ctaContainer}>
               <Dialog>
                 <DialogTrigger asChild>
                   <button 
@@ -656,6 +661,12 @@ export default function App() {
                   </div>
                 </DialogContent>
               </Dialog>
+              </div>
+            </div>
+
+            {/* Right Column: TASK 4 Pure CSS/SVG Illustration */}
+            <div style={styles.heroIllustration} aria-hidden="true">
+              <BrainIllustration />
             </div>
           </div>
         </section>
@@ -914,6 +925,9 @@ export default function App() {
           </div>
         </section>
 
+        {/* Task 5: Vanilla JavaScript UI Components Demo */}
+        <VanillaComponentsDemo />
+
         {/* Footer */}
         <footer ref={footerRef} style={styles.footer}>
           <div style={styles.footerContent}>
@@ -1142,6 +1156,28 @@ export default function App() {
         @media (min-width: 1441px) {
           /* Styles handled by max-width constraints */
         }
+
+        /* TASK 4: Responsive hero grid layout */
+        @media (max-width: 768px) {
+          /* Single column on mobile, illustration below content */
+          .hero-grid-override {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          /* Tablet: maintain two columns but with narrower gap */
+          .hero-grid-override {
+            gap: clamp(30px, 5vw, 50px) !important;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          /* Desktop: optimal two-column layout */
+          .hero-grid-override {
+            grid-template-columns: 1.2fr 1fr !important;
+          }
+        }
       `}</style>
     </div>
   );
@@ -1178,6 +1214,28 @@ const styles = {
     justifyContent: 'center',
     padding: 'clamp(60px, 10vh, 100px) clamp(20px, 5vw, 40px) 40px',
     position: 'relative' as const,
+  },
+  // TASK 4: CSS Grid for two-column responsive layout
+  heroGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+    gap: 'clamp(40px, 8vw, 80px)',
+    alignItems: 'center',
+    maxWidth: '1400px',
+    width: '100%',
+    position: 'relative' as const,
+    zIndex: 3,
+  },
+  heroContent: {
+    position: 'relative' as const,
+    zIndex: 3,
+  },
+  heroIllustration: {
+    position: 'relative' as const,
+    minHeight: '400px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   orb1: {
     position: 'absolute' as const,
@@ -1222,14 +1280,14 @@ const styles = {
     zIndex: 3,
   },
   headline: {
-    fontSize: 'clamp(32px, 8vw, 72px)',
+    fontSize: 'clamp(32px, 7vw, 64px)',
     fontWeight: '900',
     marginBottom: '24px',
     lineHeight: '1.1',
     color: '#ffffff',
   },
   subheadline: {
-    fontSize: 'clamp(18px, 4vw, 28px)',
+    fontSize: 'clamp(18px, 3.5vw, 26px)',
     marginBottom: '24px',
     fontWeight: '600',
   },
@@ -1238,16 +1296,14 @@ const styles = {
     lineHeight: '1.6',
     color: 'rgba(255, 255, 255, 0.8)',
     marginBottom: '40px',
-    maxWidth: '700px',
+    maxWidth: '600px',
     margin: '0 auto 40px',
-    padding: '0 20px',
   },
   ctaContainer: {
     display: 'flex',
     gap: 'clamp(12px, 3vw, 20px)',
     justifyContent: 'center',
     flexWrap: 'wrap' as const,
-    padding: '0 20px',
   },
   primaryButton: {
     padding: 'clamp(14px, 2.5vw, 18px) clamp(24px, 5vw, 40px)',

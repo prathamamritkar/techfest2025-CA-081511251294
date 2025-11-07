@@ -26,6 +26,32 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --radius: 0.625rem;
+
+  /* TASK 4: Custom Properties for NeuroGarden Theme */
+  --color-primary: #00ff88;
+  --color-secondary: #00ccff;
+  --color-accent: #ff00ff;
+  --color-background: #0a0e27;
+  --color-background-dark: #1a1f3a;
+  --color-glow: rgba(0, 255, 136, 0.6);
+  --color-glow-secondary: rgba(0, 204, 255, 0.6);
+  --color-glow-accent: rgba(255, 0, 255, 0.5);
+  
+  /* Spacing and Layout */
+  --hero-gap: clamp(40px, 8vw, 80px);
+  --section-padding: clamp(60px, 12vh, 120px);
+  --content-max-width: 1400px;
+  
+  /* Animation Timings */
+  --animation-duration-fast: 0.3s;
+  --animation-duration-normal: 0.6s;
+  --animation-duration-slow: 1s;
+  --animation-duration-very-slow: 3s;
+  
+  /* Effects */
+  --blur-amount: 60px;
+  --shadow-glow: 0 0 30px var(--color-glow);
+  --shadow-glow-strong: 0 0 60px var(--color-glow);
 }
 
 .dark {

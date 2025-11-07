@@ -37,8 +37,8 @@ export function ParticleField() {
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
+        size: Math.random() * 2.5 + 0.8,
+        opacity: Math.random() * 0.3 + 0.1,
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -91,8 +91,8 @@ export function ParticleField() {
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.strokeStyle = particle.color;
-            ctx.globalAlpha = (1 - distance / 150) * 0.2;
-            ctx.lineWidth = 1;
+            ctx.globalAlpha = (1 - distance / 150) * 0.08;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         });

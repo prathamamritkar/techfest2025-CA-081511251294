@@ -391,6 +391,10 @@
 }
 
 @layer utilities {
+  .visible {
+    visibility: visible;
+  }
+
   .sr-only {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -471,6 +475,10 @@
     .container {
       max-width: 96rem;
     }
+  }
+
+  .block {
+    display: block;
   }
 
   .flex {

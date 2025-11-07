@@ -1,7 +1,7 @@
 
-  # Landing Page with Animation
+  # Neurogarden
 
-  This is a code bundle for Landing Page with Animation. The original project is available at https://www.figma.com/design/iECYOW59UnStdd12QI1aQJ/Landing-Page-with-Animation.
+  This is a code bundle for Neurogarden. The original project is available at https://www.figma.com/design/iECYOW59UnStdd12QI1aQJ/Neurogarden.
 
   ## Running the code
 

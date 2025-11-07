@@ -21,7 +21,7 @@ AI-powered cognitive training that visualizes mental growth as a digital garden.
 - **React 18** with TypeScript
 - **Vite** for blazing fast builds
 - **GSAP** for professional animations
-- **Tailwind CSS v4** for styling
+- **Tailwind CSS v3** for styling (production-stable)
 - **Radix UI** for accessible components
 - **Lucide React** for icons
 
